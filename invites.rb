@@ -26,11 +26,13 @@ end
 # fetch all mail messages from the server
 messages = Mail.all
 
+# Iterate over messages and populate email lists
 messages.each do |message|
-	if admins.index(message.from.to_s()) != nil then
+	from_address = message.from.first
+	if admins.index(from_address) != nil then
 		puts message.subject
-	elsif invited.index(message.from.to_s()) != nil then
-		invited.delete(message.from.to_s())
-		subscribed.push(message.from.to_s())
+	elsif invited.index(from_address) != nil then
+		invited.delete(from_address)
+		subscribed.push(from_address)
 	end
 end
