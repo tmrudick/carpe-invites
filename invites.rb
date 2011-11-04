@@ -11,7 +11,7 @@ settings = YAML.load_file('settings.yml')
 admins = settings["admins"]
 
 # read the already invited list
-invited = File.readlines('invited.txt').collect! { |l| l.strip() }
+invited = File.readlines('invited.txt').collect! { |l| l.strip }
 
 # create empty array to hold the list of people that subscribed with this run
 subscribed = []
@@ -41,7 +41,7 @@ messages.each do |message|
 	from_address = message.from.first
 	if admins.index(from_address) != nil then
 		# an admin sent an email with an email address in the title
-		new_invites.push(message.subject.trim())
+		new_invites.push(message.subject.strip)
 		invited.push(message.subject)
 	elsif invited.index(from_address) != nil then
 		# someone responded to an invitation email
