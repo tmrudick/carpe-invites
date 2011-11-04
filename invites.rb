@@ -80,7 +80,7 @@ end
 sub_file.close()
 
 # Optionally run program to pick up new addresses
-if settings["add_path"] != nil then
+if settings["add_path"] != nil and subscribed.length > 0 then
 	`#{settings["add_path"]} subscribed.txt`
 end
 
