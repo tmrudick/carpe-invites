@@ -2,3 +2,7 @@ host: host
 username: username
 password: password
 admins: []
+domain: example.com
+from_address: foo <foo@bar.com>
+subject: subject
+message: message.txt
