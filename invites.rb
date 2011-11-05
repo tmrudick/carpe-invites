@@ -57,7 +57,10 @@ new_invites.each do |address|
 		from	settings["from_address"]
 		to		address
 		subject	settings["subject"]
-		body 	File.read(settings["message"])
+		html_part do
+			content_type 'text/html; charset=UTF-8'
+			body 	File.read(settings["message"])
+		end
 	end
 	message.deliver!
 end
